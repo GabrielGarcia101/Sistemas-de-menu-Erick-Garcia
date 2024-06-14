@@ -1,0 +1,81 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+
+/**
+ *
+ * @author panda
+ */
+
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Ejemplo de Menú");
+
+        // Crear la barra de menú
+        MenuBar menuBar = new MenuBar();
+
+        // Crear los menús principales
+        Menu archivoMenu = new Menu("Archivo");
+        Menu editarMenu = new Menu("Editar");
+        Menu ayudaMenu = new Menu("Ayuda");
+
+        // Crear los elementos de menú para "Archivo"
+        MenuItem nuevoItem = new MenuItem("Nuevo");
+        MenuItem abrirItem = new MenuItem("Abrir");
+        MenuItem guardarItem = new MenuItem("Guardar");
+        MenuItem salirItem = new MenuItem("Salir");
+
+        // Añadir separadores y elementos al menú "Archivo"
+        archivoMenu.getItems().addAll(nuevoItem, abrirItem, new SeparatorMenuItem(), guardarItem, new SeparatorMenuItem(), salirItem);
+
+        // Crear los elementos de menú para "Editar"
+        MenuItem cortarItem = new MenuItem("Cortar");
+        MenuItem copiarItem = new MenuItem("Copiar");
+        MenuItem pegarItem = new MenuItem("Pegar");
+
+        // Añadir separadores y elementos al menú "Editar"
+        editarMenu.getItems().addAll(cortarItem, copiarItem, new SeparatorMenuItem(), pegarItem);
+
+        // Crear los elementos de menú para "Ayuda"
+        MenuItem acercaDeItem = new MenuItem("Acerca de");
+
+        // Añadir elementos al menú "Ayuda"
+        ayudaMenu.getItems().addAll(acercaDeItem);
+
+        // Añadir los menús principales a la barra de menú
+        menuBar.getMenus().addAll(archivoMenu, editarMenu, ayudaMenu);
+
+        // Definir las acciones para cada elemento de menú
+        nuevoItem.setOnAction(e -> System.out.println("Nuevo archivo creado"));
+        abrirItem.setOnAction(e -> System.out.println("Abrir archivo"));
+        guardarItem.setOnAction(e -> System.out.println("Guardar archivo"));
+        salirItem.setOnAction(e -> System.exit(0));
+        cortarItem.setOnAction(e -> System.out.println("Cortar"));
+        copiarItem.setOnAction(e -> System.out.println("Copiar"));
+        pegarItem.setOnAction(e -> System.out.println("Pegar"));
+        acercaDeItem.setOnAction(e -> System.out.println("Acerca de este programa"));
+
+        // Crear el layout principal
+        BorderPane borderPane = new BorderPane();
+        borderPane.setTop(menuBar);
+
+        // Crear la escena y asignarla al escenario
+        Scene scene = new Scene(borderPane, 800, 600);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
